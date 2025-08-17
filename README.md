@@ -1,0 +1,2 @@
+# smartgoldtrade
+Tradinng platform 
