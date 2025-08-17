@@ -1,0 +1,572 @@
+/* ===================================
+   Global Styles & Variables
+==================================== */
+:root {
+    --gold: #FFD700;
+    --dark-gold: #B8860B;
+    --dark-black: #1A1A1A;
+    --off-white: #f4f4f4;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: #000;
+    color: var(--off-white);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--gold);
+}
+
+h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+p { margin-bottom: 1rem; }
+a { color: var(--gold); text-decoration: none; transition: color 0.3s ease; }
+a:hover { color: var(--off-white); }
+
+.section-padding { padding: 60px 0; }
+.section-title { text-align: center; margin-bottom: 40px; }
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--dark-black);
+    border: 2px solid var(--gold);
+}
+.btn-gold:hover {
+    background-color: transparent;
+    color: var(--gold);
+}
+
+.btn-dark {
+    background-color: var(--dark-black);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+.btn-dark:hover {
+    background-color: var(--gold);
+    color: var(--dark-black);
+}
+
+/* ===================================
+   Header & Navigation
+==================================== */
+.top-bar {
+    background-color: #111;
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-info span { margin-right: 20px; }
+.user-actions a { margin-left: 15px; }
+.btn-register {
+    background: var(--gold);
+    color: var(--dark-black);
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.btn-register:hover {
+    background: var(--dark-gold);
+    color: #fff;
+}
+
+.main-header {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Added for better mobile wrapping */
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: #fff;
+}
+.logo span { color: var(--gold); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+.nav-links li {
+    margin-left: 30px;
+    position: relative;
+}
+.nav-links a {
+    color: #fff;
+    font-weight: 500;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #111;
+    list-style: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu li { margin: 10px 0; }
+
+.mobile-nav-toggle { display: none; }
+
+/* ===================================
+   Hero Section
+==================================== */
+.hero {
+    height: 90vh;
+    background: url('https://images.unsplash.com/photo-1589763868464-e15c3a58f375?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-content h1 span { color: var(--gold); }
+.hero-buttons { margin-top: 2rem; }
+.hero-buttons .btn { margin: 0 10px; }
+
+/* ===================================
+   General Sections & Grids
+==================================== */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-box {
+    background: #111;
+    padding: 2rem;
+    border-radius: 8px;
+    border-bottom: 3px solid var(--gold);
+    transition: transform 0.3s ease;
+}
+.feature-box:hover { transform: translateY(-10px); }
+
+.price-ticker {
+    background-color: #111;
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.ticker-track {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+}
+.ticker-track span { padding: 0 2rem; font-weight: 600; color: var(--gold); }
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.plan-card {
+    background: #111;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.plan-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Gold Shop Specific Styles */
+.filter-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #1a1a1a; /* Darker background for filter section */
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-section .form-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--gold); /* Gold color for labels */
+}
+
+.filter-section .form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a; /* Darker input background */
+    color: var(--off-white);
+    font-size: 1rem;
+}
+
+.filter-section .form-control::placeholder {
+    color: #888;
+}
+
+.filter-section .btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger cards */
+    gap: 30px; /* Increased gap */
+}
+
+.product-card {
+    background: #111; /* Consistent with other cards */
+    padding: 25px; /* Increased padding */
+    border-radius: 10px; /* More rounded corners */
+    border: 1px solid #333;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex; /* Use flex for better internal layout */
+    flex-direction: column;
+    justify-content: space-between; /* Push button to bottom */
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2); /* Gold glow */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 150px; /* Adjusted image height */
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 8px; /* Rounded image corners */
+    border: 1px solid #444; /* Subtle border for images */
+}
+
+.product-card h4 {
+    font-size: 1.4rem; /* Larger title */
+    margin-bottom: 8px;
+    color: var(--gold); /* Gold color for product names */
+}
+
+.product-card p {
+    font-size: 0.95rem;
+    color: #bbb; /* Lighter grey for description */
+    margin-bottom: 10px;
+    flex-grow: 1; /* Allow description to take available space */
+}
+
+.product-card .price {
+    font-size: 1.6rem; /* Larger price */
+    font-weight: bold;
+    color: var(--gold); /* Gold color for price */
+    margin-bottom: 20px; /* More space before button */
+}
+
+.product-card .btn {
+    display: block;
+    width: 100%;
+    padding: 12px; /* Larger button padding */
+    background-color: var(--gold); /* Gold button */
+    color: var(--dark-black); /* Dark text on gold */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-card .btn:hover {
+    background-color: var(--dark-gold); /* Darker gold on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Responsive adjustments for gold shop */
+@media (max-width: 600px) {
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-section .form-group {
+        min-width: unset;
+        width: 100%;
+    }
+    .product-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+/* P2P Specific Styles */
+.p2p-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.p2p-section h4 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.p2p-section .form-group {
+    margin-bottom: 15px;
+}
+
+.p2p-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--off-white);
+}
+
+.p2p-section .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: var(--off-white);
+}
+
+.p2p-section .form-check {
+    margin-bottom: 5px;
+}
+
+.p2p-section .form-check-input {
+    margin-right: 8px;
+}
+
+.p2p-section .form-check-label {
+    color: #bbb;
+}
+
+.p2p-offers-list {
+    margin-top: 30px;
+}
+
+.p2p-offers-list h4 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    border: 1px solid #333;
+    text-align: left;
+    color: var(--off-white);
+}
+
+.table th {
+    background-color: #2a2a2a;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #1a1a1a;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #111;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background-color: #28a745; /* Green */
+    color: #fff;
+}
+
+.badge-danger {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+.plan-card.featured {
+    border-color: var(--gold);
+    transform: scale(1.05);
+    position: relative;
+}
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--gold);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.plan-profit { font-size: 2.5rem; color: var(--gold); font-weight: bold; }
+
+.trading-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+.trading-text { flex: 1; min-width: 300px; }
+.trading-text ul { list-style: none; padding: 0; margin: 1.5rem 0; }
+.trading-text ul li { margin-bottom: 1rem; }
+.trading-image { flex: 1; min-width: 300px; }
+.trading-image img { width: 100%; border-radius: 8px; border: 2px solid var(--dark-gold); }
+
+.product-card img { width: 100%; border-radius: 5px; margin-bottom: 1rem; }
+.product-card .price { font-size: 1.2rem; font-weight: bold; color: var(--gold); }
+
+.cta {
+    background: linear-gradient(90deg, var(--gold), var(--dark-gold));
+    color: var(--dark-black);
+    padding: 4rem 0;
+    text-align: center;
+}
+.cta h2 { color: var(--dark-black); }
+.cta p { color: #333; }
+.cta .btn-dark { border-color: var(--dark-black); }
+.cta .btn-dark:hover { background: var(--dark-black); color: var(--gold); }
+
+/* ===================================
+   Footer
+==================================== */
+.main-footer {
+    background-color: #111;
+    padding: 40px 0 20px;
+    margin-top: 60px;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 30px;
+}
+.footer-widget h4 { margin-bottom: 15px; }
+.footer-widget ul { list-style: none; }
+.footer-widget ul li { margin-bottom: 10px; }
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   Responsive Design
+==================================== */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    
+    .top-bar-content { flex-direction: column; }
+    .contact-info { margin-bottom: 10px; }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #111;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px;
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li { margin: 15px 0; }
+    .dropdown-menu { position: static; width: 100%; background: transparent; }
+
+    .mobile-nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
